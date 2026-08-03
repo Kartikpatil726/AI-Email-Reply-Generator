@@ -9,7 +9,7 @@ client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 def generate_replies(email_text, tone):
     prompt = build_prompt(email_text, tone)
     response = client.models.generate_content(
-    model="gemini-pro",
+    model="gemini-flash-latest",
     contents=prompt
 )
   # Extract text from response candidates
