@@ -1,7 +1,7 @@
 # ✉️ AI Email Reply Generator
 
 An AI-powered web application that generates professional email replies
-using Google's Gemini API. Built with Python and Streamlit.
+using OpenAI API. Built with Python and Streamlit.
 
 ## 🚀 Live Demo
 [Click here to try the app](https://ai-email-reply-generator-kczxo3ktshkhtdzymviwsj.streamlit.app)
@@ -10,11 +10,11 @@ using Google's Gemini API. Built with Python and Streamlit.
 - Paste any email and get 3 AI-written reply options
 - Choose from multiple tones: Professional, Friendly, Formal, Casual
 - One-click copy for each reply
-- Powered by Gemini Flash (fast and cost-effective)
-
+- Powered by gpt-5-mini
+- 
 ## 🛠️ Tech Stack
 - Python 3.12
-- Google Gemini API (gemini-flash-latest)
+- OpenAI API (gpt-5-mini)
 - Streamlit
 - python-dotenv
 
