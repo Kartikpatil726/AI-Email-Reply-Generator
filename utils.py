@@ -2,17 +2,17 @@ import os
 import time
 from dotenv import load_dotenv
 from google import genai
-from google.genai.errors import ServerError
+from google.genai.errors import ServerError, ClientError
 from prompts import build_prompt
 
 load_dotenv()
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
-MODELS = ["gemini-flash-latest", "gemini-2.0-flash", "gemini-2.5-flash-lite"]
+MODELS = ["gemini-flash-latest", "gemini-flash-lite-latest", "gemini-pro-latest"]
 
 def generate_replies(email_text, tone, max_retries=2):
     prompt = build_prompt(email_text, tone)
-    
+
     for model in MODELS:
         for attempt in range(max_retries):
             try:
@@ -31,5 +31,7 @@ def generate_replies(email_text, tone, max_retries=2):
                 if attempt < max_retries - 1:
                     time.sleep(2 ** attempt)
                 # else: fall through to next model
+            except ClientError:
+                break  # this model unavailable, move to next model immediately
 
-    return "⚠️ All models are currently overloaded. Please try again in a minute."
+    return "⚠️ All models are currently unavailable. Please try again in a minute."
